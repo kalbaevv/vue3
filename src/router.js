@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Cart from "../src/pages/cart/Cart.vue";
-import ItemsList from "../src/components/itemsList/ItemsList.vue";
+import HomePage from "../src/components/homePage/HomePage.vue";
 export default createRouter({
 	history: createWebHashHistory(),
 	routes: [
 		{
 			path: "/",
-			component: ItemsList,
+			component: HomePage,
 		},
 		{
 			path: "/cart",
