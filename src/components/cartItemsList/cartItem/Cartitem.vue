@@ -1,5 +1,6 @@
 <script setup>
 import { useCartStore } from "../../../stores/CartStore";
+import deleteIcon from "../../../assets/delete.svg";
 
 const props = defineProps(["product"]);
 
@@ -24,9 +25,10 @@ const cartStore = useCartStore();
 		</div>
 		<div class="total-wrapper">
 			<p>{{ product.priceInCart }} руб.</p>
-			<button class="btn remove-btn" @click="cartStore.removeFromCart(product)">
-				remove
-			</button>
+			<img
+				:src="deleteIcon"
+				class="btn remove-btn"
+				@click="cartStore.removeFromCart(product)" />
 		</div>
 	</div>
 </template>
@@ -45,11 +47,10 @@ const cartStore = useCartStore();
 }
 
 .btn {
-	padding: 5px;
 	border-radius: 3px;
 	background-color: #7eaa92;
 	border: none;
-	width: 50px;
+	width: 32px;
 	font-size: 18px;
 	color: #fff;
 	cursor: pointer;
@@ -59,10 +60,6 @@ const cartStore = useCartStore();
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-}
-
-.remove-btn {
-	width: 70px;
 }
 
 .remove-btn:hover {

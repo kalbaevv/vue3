@@ -5,10 +5,10 @@ import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
 <template>
 	<div class="cartSection">
 		<div class="cartParams">
-			<div>Наименование товара и описание:</div>
-			<div>Количество:</div>
-			<div>Цена за шт:</div>
-			<div>Сумма:</div>
+			<div>Наименование товара и описание</div>
+			<div>Количество</div>
+			<div>Цена за шт</div>
+			<div>Сумма</div>
 		</div>
 	</div>
 	<div class="list">
@@ -34,7 +34,8 @@ import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
 	padding: 20px;
 	color: #fff;
 	background-color: #45503b;
-	overflow: auto;
+	height: 500px;
+	overflow-y: auto;
 	overflow-x: hidden;
 }
 </style>

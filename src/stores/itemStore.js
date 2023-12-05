@@ -1,7 +1,11 @@
-// store.js
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useItemStore = defineStore("itemStore", () => {
+	let exchangeRate = ref(30);
+
+	console.log(exchangeRate.value);
+
 	const mapData = (data1, data2) => {
 		const mappedData = [];
 
@@ -42,7 +46,13 @@ export const useItemStore = defineStore("itemStore", () => {
 		return priceUSD * 30;
 	};
 
+	const setExchangeRate = () => {
+		exchangeRate.value = Math.floor(Math.random() * 50) + 20;
+	};
+
 	return {
 		mapData,
+		setExchangeRate,
+		exchangeRate,
 	};
 });

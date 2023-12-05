@@ -4,6 +4,7 @@ import { ref } from "vue";
 import cart from "../../assets/cart.svg";
 import { useCartStore } from "../../stores/CartStore";
 import changePrice from "../../utils/changePrice";
+import ruble from "../../assets/ruble.svg";
 
 const props = defineProps(["products"]);
 
@@ -67,7 +68,10 @@ function handleClick(item, quantityToCart) {
 					</div>
 				</div>
 				<div class="rightContent">
-					<p class="price">{{ Math.floor(products.price) }}</p>
+					<div class="priceWrapper">
+						<p class="price">{{ Math.floor(products.price) }}</p>
+						<img class="rubleIcon" :src="ruble" alt="" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -99,7 +103,7 @@ function handleClick(item, quantityToCart) {
 }
 
 .quantityCartWrapper {
-	margin-top: 10px;
+	margin-top: 20px;
 	display: flex;
 	gap: 25px;
 	align-items: center;
@@ -156,8 +160,18 @@ function handleClick(item, quantityToCart) {
 }
 
 .rightContent {
-	background-color: #c0deff;
+	background-color: #032b43;
 	padding: 10px;
 	border-radius: 10px;
+}
+
+.priceWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.rubleIcon {
+	width: 20px;
+	height: 20px;
 }
 </style>
