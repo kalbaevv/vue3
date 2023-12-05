@@ -9,7 +9,7 @@ export const useCartStore = defineStore("cartStore", () => {
 	}
 
 	const cartArray = ref(JSON.parse(localStorage.getItem("cart")));
-	console.log(cartArray.value, "cartarry");
+
 	const cartTotal = ref(0);
 
 	function addItemTocart(item, quantityInCart) {

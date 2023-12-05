@@ -13,6 +13,7 @@ import Layout from "../src/layout/Layout.vue";
 	box-sizing: border-box;
 	font-family: "Roboto", sans-serif;
 	text-decoration: none;
+	caret-color: transparent;
 }
 body {
 	background-color: #fff8e1;

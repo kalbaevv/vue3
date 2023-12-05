@@ -9,7 +9,6 @@ import { useItemStore } from "../../stores/itemStore";
 const itemStore = useItemStore();
 
 const categoriesAndProducts = ref(itemStore.mapData(dataDetails, dataNames));
-console.log(categoriesAndProducts, "categories");
 </script>
 
 <template>
@@ -17,3 +16,9 @@ console.log(categoriesAndProducts, "categories");
 		<CategoriesList :categories="categories" />
 	</div>
 </template>
+
+<style scoped>
+.homePage {
+	overflow: scroll;
+}
+</style>

@@ -1,11 +1,13 @@
 <script setup>
+import { ref } from "vue";
+
 import logo from "../../assets/logo.svg";
 import homeIcon from "../../assets/home.svg";
 import cartPageicon from "../../assets/cartPage.svg";
 </script>
 
 <template>
-	<div class="nav">
+	<div class="nav" :class="{ sticking }">
 		<div>
 			<img class="logo" :src="logo" alt="" />
 		</div>
@@ -37,6 +39,8 @@ import cartPageicon from "../../assets/cartPage.svg";
 	border-radius: 10px;
 	padding: 20px;
 	margin-top: 20px;
+	position: sticky;
+	top: 0;
 }
 .logo {
 	width: 150px;
@@ -54,6 +58,9 @@ import cartPageicon from "../../assets/cartPage.svg";
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	background-color: #dbd8ae;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .nav-search {

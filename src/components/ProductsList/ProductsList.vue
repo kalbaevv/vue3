@@ -92,7 +92,6 @@ function handleClick(item, quantityToCart) {
 
 .content:hover {
 	transform: translateY(-5px);
-	cursor: pointer;
 }
 
 .leftContent {

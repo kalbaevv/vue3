@@ -34,5 +34,7 @@ import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
 	padding: 20px;
 	color: #fff;
 	background-color: #45503b;
+	overflow: auto;
+	overflow-x: hidden;
 }
 </style>
