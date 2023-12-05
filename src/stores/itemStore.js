@@ -1,10 +1,8 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 
 export const useItemStore = defineStore("itemStore", () => {
-	let exchangeRate = ref(30);
-
-	console.log(exchangeRate.value);
+	const exchangeRate = ref(30);
 
 	const mapData = (data1, data2) => {
 		const mappedData = [];

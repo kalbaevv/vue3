@@ -26,7 +26,7 @@ import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
 .cartParams {
 	padding: 20px;
 	display: grid;
-	grid-template-columns: 500px 300px 300px 300px;
+	grid-template-columns: 540px 260px 360px 300px;
 }
 
 .list {

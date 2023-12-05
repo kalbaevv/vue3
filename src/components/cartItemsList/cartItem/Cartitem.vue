@@ -1,10 +1,24 @@
 <script setup>
 import { useCartStore } from "../../../stores/CartStore";
 import deleteIcon from "../../../assets/delete.svg";
+import increase from "../../../assets/add.svg";
+import decrease from "../../../assets/minus.svg";
 
 const props = defineProps(["product"]);
 
 const cartStore = useCartStore();
+
+console.log(props.product, "product");
+
+const increaseQuantity = (product) => {
+	if (props.product.quantityInCart < props.product.remainingQuantity) {
+		cartStore.addItemTocart(product, 1);
+	}
+};
+
+const decreaseQuantity = (item) => {
+	cartStore.minusItem(item);
+};
 </script>
 
 <template>
@@ -15,16 +29,26 @@ const cartStore = useCartStore();
 			</p>
 		</div>
 		<div class="quantity-wrapper">
+			<img
+				class="quantityIcons"
+				@click="() => decreaseQuantity(product)"
+				:src="decrease"
+				alt="" />
 			<p class="quantity-wrapper-number">
 				{{ product.quantityInCart }}
 			</p>
+			<img
+				class="quantityIcons"
+				@click="() => increaseQuantity(product)"
+				:src="increase"
+				alt="" />
 		</div>
 
 		<div>
-			<p class="list-singlePrice">{{ product.price }} руб.</p>
+			<p class="list-singlePrice">{{ Math.floor(product.price) }} руб.</p>
 		</div>
 		<div class="total-wrapper">
-			<p>{{ product.priceInCart }} руб.</p>
+			<p>{{ Math.floor(product.priceInCart) }} руб.</p>
 			<img
 				:src="deleteIcon"
 				class="btn remove-btn"
@@ -36,7 +60,7 @@ const cartStore = useCartStore();
 <style scoped>
 .list {
 	display: grid;
-	grid-template-columns: 520px 260px 300px 300px;
+	grid-template-columns: 550px 260px 300px 300px;
 	margin-bottom: 30px;
 }
 
@@ -44,6 +68,15 @@ const cartStore = useCartStore();
 	display: flex;
 	align-items: center;
 	gap: 8px;
+}
+
+.quantityIcons {
+	width: 25px;
+	height: 25px;
+	background-color: #7eaa92;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .btn {

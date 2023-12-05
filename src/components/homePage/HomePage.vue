@@ -17,8 +17,4 @@ const categoriesAndProducts = ref(itemStore.mapData(dataDetails, dataNames));
 	</div>
 </template>
 
-<style scoped>
-.homePage {
-	overflow: scroll;
-}
-</style>
+<style scoped></style>

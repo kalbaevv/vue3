@@ -27,5 +27,6 @@ const props = defineProps(["categories"]);
 	padding: 10px;
 	font-size: 20px;
 	display: flex;
+	margin-left: 30px;
 }
 </style>

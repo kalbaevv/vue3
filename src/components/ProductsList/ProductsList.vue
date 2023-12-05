@@ -36,6 +36,7 @@ function handleClick(item, quantityToCart) {
 	if (item.remainingQuantity >= quantityToCart) {
 		item.remainingQuantity -= quantityToCart;
 		cartStore.addItemTocart(item, quantityToCart);
+		console.log(quantityToCart, "quan");
 	} else {
 		alert("количество ограничено");
 	}
@@ -84,10 +85,9 @@ function handleClick(item, quantityToCart) {
 	margin: 20px;
 	width: 400px;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	background-color: #ada2ff;
-	padding: 30px;
+	padding: 20px;
 	border-radius: 10px;
 	color: white;
 	box-shadow: 10px 10px gray;
@@ -100,6 +100,9 @@ function handleClick(item, quantityToCart) {
 
 .leftContent {
 	background-color: #ada2ff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .quantityCartWrapper {
@@ -144,7 +147,6 @@ function handleClick(item, quantityToCart) {
 }
 
 .price {
-	font-family: "Roboto", sans-serif;
 	font-size: 20px;
 }
 
@@ -163,6 +165,8 @@ function handleClick(item, quantityToCart) {
 	background-color: #032b43;
 	padding: 10px;
 	border-radius: 10px;
+	height: 30px;
+	display: flex;
 }
 
 .priceWrapper {

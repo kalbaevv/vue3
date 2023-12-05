@@ -1,4 +1,6 @@
 <script setup>
+import { ref, watch, computed } from "vue";
+
 import logo from "../../assets/logo.svg";
 import homeIcon from "../../assets/home.svg";
 import cartPageicon from "../../assets/cartPage.svg";
@@ -8,9 +10,26 @@ import { useItemStore } from "../../stores/itemStore";
 
 const itemStore = useItemStore();
 
+const prevExchangeRate = ref(0);
+
 setInterval(() => {
 	itemStore.setExchangeRate();
 }, 2000);
+
+watch(
+	() => itemStore.exchangeRate,
+	(_, oldVal) => {
+		prevExchangeRate.value = oldVal;
+	}
+);
+
+const exchangeRateChange = computed(() => {
+	if (itemStore.exchangeRate > prevExchangeRate.value) {
+		return arrowUp;
+	} else {
+		return arrowDown;
+	}
+});
 </script>
 
 <template>
@@ -32,14 +51,7 @@ setInterval(() => {
 			></router-link>
 			<div class="exchangeWrapper">
 				<p class="exchangeRate">{{ itemStore.exchangeRate }}</p>
-				<img
-					class="exchangeIcon"
-					:src="
-						itemStore.exchangeRate > itemStore.exchangeRate
-							? arrowUp
-							: arrowDown
-					"
-					alt="" />
+				<img class="exchangeIcon" :src="exchangeRateChange" alt="" />
 			</div>
 		</div>
 	</div>
