@@ -12,7 +12,7 @@ import cartPageicon from "../../assets/cartPage.svg";
 		<div class="nav-list">
 			<router-link to="/">
 				<div class="nav-item">
-					<div>MainPage</div>
+					<div>Home</div>
 					<img :src="homeIcon" alt="" />
 				</div>
 			</router-link>
