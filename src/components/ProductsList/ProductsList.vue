@@ -39,8 +39,6 @@ function handleClick(item, quantityToCart) {
 		alert("количество ограничено");
 	}
 }
-
-console.log(props);
 </script>
 <template>
 	<div class="container">

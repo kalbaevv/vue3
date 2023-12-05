@@ -20,7 +20,7 @@ export const useItemStore = defineStore("itemStore", () => {
 					};
 
 					let categoryIndex = mappedData.findIndex(
-						(category) => category.Name === category2.G
+						(category) => category.name === category2.G
 					);
 
 					if (categoryIndex === -1) {

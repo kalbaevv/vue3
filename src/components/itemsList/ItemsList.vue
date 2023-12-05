@@ -9,6 +9,7 @@ import { useItemStore } from "../../stores/itemStore";
 const itemStore = useItemStore();
 
 const categoriesAndProducts = ref(itemStore.mapData(dataDetails, dataNames));
+console.log(categoriesAndProducts, "categories");
 </script>
 
 <template>
