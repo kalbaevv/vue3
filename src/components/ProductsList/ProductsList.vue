@@ -1,0 +1,166 @@
+<script setup>
+import { ref } from "vue";
+
+import cart from "../../assets/cart.svg";
+import { useCartStore } from "../../stores/CartStore";
+import changePrice from "../../utils/changePrice";
+
+const props = defineProps(["products"]);
+
+const cartStore = useCartStore();
+
+const quantityToCart = ref(1);
+const changedPrice = ref(props.products.price);
+
+setInterval(() => {
+	props.products.price = changePrice(changedPrice.value);
+	return changePrice(props.products.price);
+}, 15000);
+
+function increaseQuantityToCart() {
+	if (quantityToCart.value < props.products.remainingQuantity) {
+		quantityToCart.value += 1;
+	} else {
+		alert("количество ограничено");
+	}
+}
+
+function decreaseQuantityToCart() {
+	if (quantityToCart.value > 0) {
+		quantityToCart.value -= 1;
+	}
+}
+
+function handleClick(item, quantityToCart) {
+	if (item.remainingQuantity >= quantityToCart) {
+		item.remainingQuantity -= quantityToCart;
+		cartStore.addItemTocart(item, quantityToCart);
+	} else {
+		alert("количество ограничено");
+	}
+}
+
+console.log(props);
+</script>
+<template>
+	<div class="container">
+		<div class="section">
+			<div class="content">
+				<div class="leftContent">
+					<div class="title">
+						<p>{{ products.name }}</p>
+					</div>
+					<div class="quantityCartWrapper">
+						<p class="quantity">кол-во: {{ products.remainingQuantity }}</p>
+						<div class="cartButtons">
+							<button @click="decreaseQuantityToCart" class="decreaseButton">
+								-
+							</button>
+							<p class="cartQuantity">{{ quantityToCart }}</p>
+							<button @click="increaseQuantityToCart" class="decreaseButton">
+								+
+							</button>
+						</div>
+						<img
+							@click="() => handleClick(products, quantityToCart)"
+							class="cartIcon"
+							:src="cart"
+							alt="" />
+					</div>
+				</div>
+				<div class="rightContent">
+					<p class="price">{{ Math.floor(products.price) }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style scoped>
+.content {
+	min-height: 200px;
+	margin: 20px;
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #ada2ff;
+	padding: 30px;
+	border-radius: 10px;
+	color: white;
+	box-shadow: 10px 10px gray;
+	transition: transform 0.3s ease-out;
+}
+
+.content:hover {
+	transform: translateY(-5px);
+	cursor: pointer;
+}
+
+.leftContent {
+	background-color: #ada2ff;
+}
+
+.quantityCartWrapper {
+	margin-top: 10px;
+	display: flex;
+	gap: 25px;
+	align-items: center;
+}
+
+.quantity {
+	font-size: 18px;
+	color: #f0f0f0;
+}
+
+.cartButtons {
+	display: flex;
+	align-items: center;
+}
+
+.decreaseButton {
+	padding: 5px;
+	width: 30px;
+	background-color: #67729d;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.cartQuantity {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	width: 30px;
+	background-color: #c0deff;
+	height: 32px;
+	color: #ada2ff;
+	border-radius: 5px;
+	font-family: "Roboto", sans-serif;
+}
+
+.price {
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+}
+
+.cartIcon {
+	background-color: slateblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	width: 32px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.rightContent {
+	background-color: #c0deff;
+	padding: 10px;
+	border-radius: 10px;
+}
+</style>
