@@ -86,11 +86,11 @@ function handleClick(item, quantityToCart) {
 	width: 400px;
 	display: flex;
 	justify-content: space-between;
-	background-color: #ada2ff;
+	background-color: #596f62;
 	padding: 20px;
 	border-radius: 10px;
 	color: white;
-	box-shadow: 10px 10px gray;
+	box-shadow: 10px 10px #1c3144;
 	transition: transform 0.3s ease-out;
 }
 
@@ -99,7 +99,7 @@ function handleClick(item, quantityToCart) {
 }
 
 .leftContent {
-	background-color: #ada2ff;
+	background-color: #596f62;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -125,7 +125,7 @@ function handleClick(item, quantityToCart) {
 .decreaseButton {
 	padding: 5px;
 	width: 30px;
-	background-color: #67729d;
+	background-color: #cacc90;
 	border-radius: 5px;
 	border: none;
 	color: white;
@@ -139,9 +139,9 @@ function handleClick(item, quantityToCart) {
 	justify-content: center;
 	font-size: 18px;
 	width: 30px;
-	background-color: #c0deff;
+	background-color: #7ea16b;
 	height: 32px;
-	color: #ada2ff;
+	color: #fff;
 	border-radius: 5px;
 	font-family: "Roboto", sans-serif;
 }
@@ -151,7 +151,7 @@ function handleClick(item, quantityToCart) {
 }
 
 .cartIcon {
-	background-color: slateblue;
+	background-color: #7ea16b;
 	display: flex;
 	align-items: center;
 	justify-content: center;

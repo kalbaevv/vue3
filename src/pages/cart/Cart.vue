@@ -1,5 +1,9 @@
 <script setup>
 import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
+import WarningModal from "../../components/warningModal/WarningModal.vue";
+import { useModalStore } from "../../stores/ModalStore";
+
+const modalStore = useModalStore();
 </script>
 
 <template>
@@ -13,6 +17,9 @@ import CartItemsList from "../../components/cartItemsList/CartItemsList.vue";
 	</div>
 	<div class="list">
 		<CartItemsList />
+	</div>
+	<div v-if="modalStore.isModalOpen">
+		<WarningModal />
 	</div>
 </template>
 

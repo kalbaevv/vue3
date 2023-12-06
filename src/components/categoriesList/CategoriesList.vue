@@ -18,9 +18,8 @@ const props = defineProps(["categories"]);
 .heading {
 	margin-top: 20px;
 	font-size: 30px;
-	color: #9cb380;
-	background-color: #d4e09b;
-	border-radius: 5px;
+	color: #fff;
+	border-bottom: 3px solid #90baad;
 	padding: 10px;
 }
 .list {

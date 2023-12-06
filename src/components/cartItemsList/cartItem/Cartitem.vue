@@ -3,12 +3,12 @@ import { useCartStore } from "../../../stores/CartStore";
 import deleteIcon from "../../../assets/delete.svg";
 import increase from "../../../assets/add.svg";
 import decrease from "../../../assets/minus.svg";
+import { useModalStore } from "../../../stores/ModalStore";
 
-const props = defineProps(["product"]);
-
+const modalStore = useModalStore();
 const cartStore = useCartStore();
 
-console.log(props.product, "product");
+const props = defineProps(["product"]);
 
 const increaseQuantity = (product) => {
 	if (props.product.quantityInCart < props.product.remainingQuantity) {
@@ -17,7 +17,12 @@ const increaseQuantity = (product) => {
 };
 
 const decreaseQuantity = (item) => {
-	cartStore.minusItem(item);
+	if (props.product.quantityInCart > 1) {
+		cartStore.minusItem(item);
+	} else {
+		modalStore.toggleModal();
+		modalStore.currentObject.value = props.product;
+	}
 };
 </script>
 

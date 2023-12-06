@@ -49,10 +49,10 @@ export const useCartStore = defineStore("cartStore", () => {
 			productInCart.quantityInCart -= 1;
 			productInCart.priceInCart -= product.price;
 
-			// if (productInCart.quantityInCart === 0) {
-			// 	const index = cart.indexOf(productInCart);
-			// 	cart.splice(index, 1);
-			// }
+			if (productInCart.quantityInCart === 0) {
+				const index = cart.indexOf(productInCart);
+				cart.splice(index, 1);
+			}
 		}
 
 		localStorage.setItem("cart", JSON.stringify(cart));
