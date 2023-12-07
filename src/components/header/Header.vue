@@ -11,17 +11,6 @@ import { useItemStore } from "../../stores/itemStore";
 const itemStore = useItemStore();
 
 const prevExchangeRate = ref(0);
-const isActive = ref("home");
-
-const handleClickHome = () => {
-	isActive.value = "home";
-	console.log(isActive.value);
-};
-
-const handleClickCart = () => {
-	isActive.value = "cart";
-	console.log(isActive.value);
-};
 
 setInterval(() => {
 	itemStore.setExchangeRate();
@@ -51,23 +40,16 @@ const exchangeRateChange = computed(() => {
 		<div class="nav-list">
 			<router-link to="/">
 				<div class="nav-item">
-					<div
-						:class="isActive === 'home' ? isActiveStyle : ''"
-						@click="handleClickHome">
-						Домой
-					</div>
+					<div>Домой</div>
 					<img :src="homeIcon" alt="" />
 				</div>
 			</router-link>
-			<router-link to="/cart"
-				><div class="nav-item">
-					<div
-						:class="isActive === 'cart' ? isActiveStyle : ''"
-						@click="handleClickCart">
-						Корзина
-					</div>
-					<img :src="cartPageicon" alt="" /></div
-			></router-link>
+			<router-link to="/cart">
+				<div class="nav-item">
+					<div>Корзина</div>
+					<img :src="cartPageicon" alt="" />
+				</div>
+			</router-link>
 			<div class="exchangeWrapper">
 				<p class="exchangeRate">{{ itemStore.exchangeRate }}</p>
 				<img class="exchangeIcon" :src="exchangeRateChange" alt="" />
@@ -127,7 +109,12 @@ const exchangeRateChange = computed(() => {
 	width: 20px;
 }
 
-.isActiveStyle {
-	background-color: red;
+.router-link-active {
+	background-color: #94a89a;
+	border-radius: 5px;
 }
+
+/* .router-link-exact-active {
+	background-color: red;
+} */
 </style>

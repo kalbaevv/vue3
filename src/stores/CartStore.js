@@ -12,7 +12,7 @@ export const useCartStore = defineStore("cartStore", () => {
 
 	const cartTotal = ref(0);
 
-	function addItemTocart(item, quantityInCart) {
+	function addItemToCart(item, quantityInCart) {
 		const existingItemIndex = cartArray.value.findIndex(
 			(cartItem) => cartItem.id === item.id
 		);
@@ -61,7 +61,7 @@ export const useCartStore = defineStore("cartStore", () => {
 	return {
 		cartArray,
 		cartTotal,
-		addItemTocart,
+		addItemToCart,
 		removeFromCart,
 		minusItem,
 	};

@@ -24,6 +24,11 @@ const decreaseQuantity = (item) => {
 		modalStore.currentObject.value = props.product;
 	}
 };
+
+const handleRemoveItem = () => {
+	modalStore.toggleModal();
+	cartStore.removeFromCart(props.product);
+};
 </script>
 
 <template>
@@ -36,7 +41,7 @@ const decreaseQuantity = (item) => {
 		<div class="quantity-wrapper">
 			<img
 				class="quantityIcons"
-				@click="() => decreaseQuantity(product)"
+				@click="decreaseQuantity(product)"
 				:src="decrease"
 				alt="" />
 			<p class="quantity-wrapper-number">
@@ -44,7 +49,7 @@ const decreaseQuantity = (item) => {
 			</p>
 			<img
 				class="quantityIcons"
-				@click="() => increaseQuantity(product)"
+				@click="increaseQuantity(product)"
 				:src="increase"
 				alt="" />
 		</div>
@@ -54,10 +59,7 @@ const decreaseQuantity = (item) => {
 		</div>
 		<div class="total-wrapper">
 			<p>{{ Math.floor(product.priceInCart) }} руб.</p>
-			<img
-				:src="deleteIcon"
-				class="btn remove-btn"
-				@click="cartStore.removeFromCart(product)" />
+			<img :src="deleteIcon" class="btn remove-btn" @click="handleRemoveItem" />
 		</div>
 	</div>
 </template>
@@ -72,7 +74,8 @@ const decreaseQuantity = (item) => {
 .quantity-wrapper {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	width: 100px;
+	justify-content: space-between;
 }
 
 .quantityIcons {
@@ -97,7 +100,8 @@ const decreaseQuantity = (item) => {
 .total-wrapper {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
+	width: 200px;
 }
 
 .remove-btn:hover {

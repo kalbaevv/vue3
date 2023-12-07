@@ -35,7 +35,7 @@ function decreaseQuantityToCart() {
 function handleClick(item, quantityToCart) {
 	if (item.remainingQuantity >= quantityToCart) {
 		item.remainingQuantity -= quantityToCart;
-		cartStore.addItemTocart(item, quantityToCart);
+		cartStore.addItemToCart(item, quantityToCart);
 		console.log(quantityToCart, "quan");
 	} else {
 		alert("количество ограничено");
@@ -57,12 +57,14 @@ function handleClick(item, quantityToCart) {
 								-
 							</button>
 							<p class="cartQuantity">{{ quantityToCart }}</p>
-							<button @click="increaseQuantityToCart" class="decreaseButton">
+							<button
+								@click="increaseQuantityToCart"
+								class="decreaseButton border">
 								+
 							</button>
 						</div>
 						<img
-							@click="() => handleClick(products, quantityToCart)"
+							@click="handleClick(products, quantityToCart)"
 							class="cartIcon"
 							:src="cart"
 							alt="" />
@@ -126,7 +128,7 @@ function handleClick(item, quantityToCart) {
 	padding: 5px;
 	width: 30px;
 	background-color: #cacc90;
-	border-radius: 5px;
+	border-radius: 5px 0 0 5px;
 	border: none;
 	color: white;
 	font-size: 20px;
@@ -140,10 +142,12 @@ function handleClick(item, quantityToCart) {
 	font-size: 18px;
 	width: 30px;
 	background-color: #7ea16b;
-	height: 32px;
+	height: 34px;
 	color: #fff;
-	border-radius: 5px;
-	font-family: "Roboto", sans-serif;
+}
+
+.border {
+	border-radius: 0 5px 5px 0;
 }
 
 .price {
